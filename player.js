@@ -24,7 +24,7 @@ class Player {
       }
     }
   }
-
+  // I don't know why this method has a TYPEERROR
   moveDown() {
     if (keyIsDown(ARROW_DOWN)) {
       this.top += 5;
