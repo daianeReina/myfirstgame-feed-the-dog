@@ -5,6 +5,11 @@ class Game {
     //i need to create an array because the game has serveral balls
     this.balls = [];
   }
+  
+  preload() {
+    this.player.preload();
+    this.balls.preload();
+  }
 
   play() {
     this.player.drawPlayer();
@@ -22,7 +27,7 @@ class Game {
     this.balls = this.balls.filter((ball) => {
       ball.drawBalls();
 
-      return ball.left >= -ball.width;
+      return ball.left <= ball.width + 50;
     });
   }
 }
