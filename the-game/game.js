@@ -9,7 +9,7 @@ class Game {
 
   preload() {
     this.ballImg = loadImage("../Images/ball1.png");
-    for(let i = 0)
+    //for(let i = 0; i )
     this.player.preload();
   }
 
