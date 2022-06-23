@@ -1,43 +1,42 @@
 class Player {
-  constructor() {
-    this.left = 650;
-    this.top = 180;
+  constructor(span) {
+    this.x = 650;
+    this.y = 180;
     this.width = 100;
     this.height = 130;
+    this.score = 0;
+    this.span = span;
   }
- 
 
   preload() {
-    this.img = loadImage("../Images/dog-tongue.png")
+    this.img = loadImage("../Images/dog-tongue.png");
   }
 
-
   drawPlayer() {
+    this.span.innerText = this.score;
     push();
     fill(168, 123, 81);
-    ellipse(this.left + 140, this.top + 70, 200, 100)// this is the body's dog :)
+    ellipse(this.x + 140, this.y + 70, 200, 100); // this is the body's dog :)
     pop();
-    image(this.img, this.left, this.top, this.width, this.height)
-    
-    
+    image(this.img, this.x, this.y, this.width, this.height);
   }
 
   moveUp() {
     if (keyIsDown(ARROW_UP)) {
-      this.top -= 5;
+      this.y -= 5;
 
-      if (this.top <= 0) {
-        this.top = 0;
+      if (this.y <= 0) {
+        this.y = 0;
       }
     }
   }
 
   moveDown() {
     if (keyIsDown(ARROW_DOWN)) {
-      this.top += 5;
+      this.y += 5;
 
-      if (this.top >= CANVAS_HEIGHT - this.height) {
-        this.top = CANVAS_HEIGHT - this.height;
+      if (this.y >= CANVAS_HEIGHT - this.height) {
+        this.y = CANVAS_HEIGHT - this.height;
       }
     }
   }
