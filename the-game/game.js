@@ -1,30 +1,43 @@
 class Game {
   constructor() {
     //this going be Bob, our little dog
-    this.player = new Player(playerScore);
+    this.player = new Player(playerScore, playerLife);
     //i need to create an array because the game has serveral balls
     this.balls = [];
     this.ballsImages = [];
+    this.background = new Background();
   }
 
   preload() {
-    this.ballImg = loadImage("../Images/ball1.png");
-    //for(let i = 0; i )
     this.player.preload();
+    this.background.preload();
+
+    // Randomising the balls, i < 6 , because I have 6 Images.
+    for (let i = 0; i < 6; i++) {
+      this.ballsImages.push(loadImage("../Images/ball" + [i] + ".png"));
+    }
   }
 
   play() {
+    this.background.drawBackground();
     this.player.drawPlayer();
-    //the player just need do move up and down
+
+    //the player just need do move up and down.
     this.player.moveUp();
     this.player.moveDown();
 
     //the balls is my obstacles
     //with the FrameCount you can control how much balls you want
     //how can I randon the balls in the game?
-    if (frameCount % 180 === 0) {
+    if (frameCount % 75 === 0) {
       if (!this.balls.length) {
-        this.balls.push(new Balls(this.ballImg));
+        const indexRandomImage = int(random(0, 6));
+        const image = this.ballsImages[indexRandomImage];
+        if (indexRandomImage < 4) {
+          this.balls.push(new GoodBall(image));
+        } else {
+          this.balls.push(new BadBall(image));
+        }
       }
     }
 
@@ -43,9 +56,24 @@ class Game {
       if (this.isCollinding(this.player, ball)) {
         ball.catchTheBall();
 
-        this.player.score++;
-
-        //console.log('collision')
+        //Lifes of the Dog
+        //Bob, the dog, has only 3 lifes when he catch a thorn ball (ball4 or ball5) he lost a life,
+        //if he lost all of his lifes.. Game OVER
+        //Lost a life
+        if (ball.isGoodForYourHealth) {
+          this.player.score++;
+        } else {
+          if (this.player.life >= 1) {
+            this.player.life -= 1;
+          } else {
+            // let gameOver = "GAME OVER";
+            console.log("GAME OVER");
+            noLoop();
+            textSize(50);
+            text(gameOver, 10, 30);
+            fill("white");
+          }
+        }
       }
     }
   }
