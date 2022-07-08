@@ -78,12 +78,12 @@ class Game {
             textSize(70);
             text("GAME OVER", CANVAS_WIDTH / 2, CANVAS_HEIGHT / 2);
 
-            fill("black");
-            textSize(40);
-            text("Try Again", CANVAS_WIDTH / 2 + 10, CANVAS_HEIGHT / 1.5 + 5);
-            fill("red");
-            textSize(40);
-            text("Try Again", CANVAS_WIDTH / 2, CANVAS_HEIGHT / 1.5);
+            // fill("black");
+            // textSize(40);
+            // text("Try Again", CANVAS_WIDTH / 2 + 10, CANVAS_HEIGHT / 1.5 + 5);
+            // fill("red");
+            // textSize(40);
+            // text("Try Again", CANVAS_WIDTH / 2, CANVAS_HEIGHT / 1.5);
 
             noLoop();
           }

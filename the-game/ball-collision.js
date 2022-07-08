@@ -8,7 +8,7 @@ class Balls {
     this.direction = 45;
     this.dx = cos(this.direction);
     this.dy = sin(this.direction);
-    this.speed = random(5, 17);
+    this.speed = random(10, 20);
     this.img = img;
     this.dogCatchTheBall = false;
     this.angle = 0;
