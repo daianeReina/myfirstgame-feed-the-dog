@@ -11,6 +11,8 @@ class Game {
   preload() {
     this.player.preload();
     this.background.preload();
+    backgroundMusic = loadSound("../Sounds/backgroundSound.mp3");
+    //wrongBallSound = loadSound("../Sounds/mixkit-dog-whimper-sad-466.mp3");
 
     // Randomising the balls, i < 6 , because I have 6 Images.
     for (let i = 0; i < 6; i++) {
@@ -63,15 +65,27 @@ class Game {
         if (ball.isGoodForYourHealth) {
           this.player.score++;
         } else {
+          // wrongBallSound.play();
+          // wrongBallSound.setVolume(0.1);
+          // userStartAudio();
           if (this.player.life >= 1) {
             this.player.life -= 1;
           } else {
-            // let gameOver = "GAME OVER";
-            console.log("GAME OVER");
-            noLoop();
-            textSize(50);
-            text(gameOver, 10, 30);
+            fill("black");
+            textSize(70);
+            text("GAME OVER", CANVAS_WIDTH / 2 + 10, CANVAS_HEIGHT / 2 + 5);
             fill("white");
+            textSize(70);
+            text("GAME OVER", CANVAS_WIDTH / 2, CANVAS_HEIGHT / 2);
+
+            fill("black");
+            textSize(40);
+            text("Try Again", CANVAS_WIDTH / 2 + 10, CANVAS_HEIGHT / 1.5 + 5);
+            fill("red");
+            textSize(40);
+            text("Try Again", CANVAS_WIDTH / 2, CANVAS_HEIGHT / 1.5);
+
+            noLoop();
           }
         }
       }

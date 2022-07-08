@@ -7,3 +7,6 @@ const ENTER = 13;
 
 const playerScore = document.querySelector(".player span");
 const playerLife = document.querySelector(".playerlife span");
+
+let backgroundMusic;
+let wrongBallSound; //When the dog catchs a ball with spikes.

@@ -7,6 +7,7 @@ class Player {
     this.score = 0;
     this.playerScoreSpan = span;
     this.life = 3;
+    this.lifeHeart = "❤️❤️❤️";
     this.playerLifeSpan = life;
   }
 
@@ -22,8 +23,8 @@ class Player {
     ellipse(this.x + 140, this.y + 70, 200, 100); // this is the body's dog :)
     pop();
     image(this.img, this.x, this.y, this.width, this.height);
-    fill(255, 50);
-    rect(this.x, this.y, this.width, this.height);
+    // fill(255, 50);
+    // rect(this.x, this.y, this.width, this.height);
   }
 
   moveUp() {
